@@ -1,0 +1,113 @@
+{
+  "Registation": [
+    {
+      "name": "Venu",
+      "email": "pvgreddy3@gmail.com",
+      "password": "Venu@123",
+      "id": 1
+    }
+  ],
+  "Login": [
+    {
+      "email": "yhfg",
+      "password": "jyfyj",
+      "id": 1
+    }
+  ],
+  "Movies": [
+    {
+      "moviename": "Animal",
+      "starring": "Ranbir,Rashmika",
+      "genre": "Action",
+      "id": 1
+    },
+    {
+      "moviename": "Hi Nanna",
+      "starring": "Nani,Mrunal",
+      "genre": "Romance",
+      "id": 2
+    },
+    {
+      "moviename": "Salaar",
+      "starring": "Prabhash,Prudhvi",
+      "genre": "Action",
+      "id": 3
+    },
+    {
+      "moviename": "Gunturu Kaaram",
+      "starring": "Mahesh,Sreeleela",
+      "genre": "Action",
+      "id": 4
+    },
+    {
+      "moviename": "Devara",
+      "starring": "N.T.R",
+      "genre": "Sci-Fi",
+      "id": 5
+    },
+    {
+      "moviename": "Pushpa The-Rule",
+      "starring": "AlluArjun",
+      "genre": "Action",
+      "id": 6
+    }
+  ],
+  "Events": [
+    {
+      "eventname": "Abhishek",
+      "place": "Bengalore",
+      "eventtype": "Stand up Comedy",
+      "price": "500",
+      "id": 1
+    },
+    {
+      "eventname": "Naveen",
+      "place": "Chennai",
+      "eventtype": "Stand up Comedy",
+      "price": "500",
+      "id": 2
+    },
+    {
+      "eventname": "Venu",
+      "place": "Bengalore",
+      "eventtype": "Stand up Comedy",
+      "price": "500",
+      "id": 3
+    },
+    {
+      "eventname": "Harsha",
+      "place": "Chennai",
+      "eventtype": "Education",
+      "price": "1000",
+      "id": 4
+    },
+    {
+      "eventname": "Yashashwika",
+      "place": "Bengalore",
+      "eventtype": "Kids",
+      "price": "400",
+      "id": 5
+    },
+    {
+      "eventname": "Anuridh",
+      "place": "Bengalore",
+      "eventtype": "Concerts",
+      "price": "2000",
+      "id": 6
+    },
+    {
+      "eventname": "Harries Jayraj",
+      "place": "Hyderabad",
+      "eventtype": "Concerts",
+      "price": "2000",
+      "id": 7
+    },
+    {
+      "eventname": "Honey Singh",
+      "place": "Bengalore",
+      "eventtype": "Concerts",
+      "price": "5000",
+      "id": 8
+    }
+  ]
+}
