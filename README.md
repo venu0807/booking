@@ -1,11 +1,6 @@
 # Movie Booking Project (React and Django)
 
 
- # entertainemt - Frontend(React)
- 
- # env - Backend(Django)
-
-
 # Overview
 
 
@@ -35,7 +30,7 @@ Clone the repository:
 
 # bash
 Copy code
-git clone https://github.com/your-username/movie-booking-project.git
+git clone https://github.com/your-username/booking.git
 Navigate to the backend directory:
 
 # bash
