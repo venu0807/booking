@@ -7,9 +7,23 @@ export default function Movies() {
   const currentDate = new Date();
 
   const categories = [
-    { title: "Languages", options: ["English", "Hindi", "Kannada", "Telugu", "Tamil", "Malayalam", "English 7D", "Japanese", "Marathi", "Multi Language"] },
+    {
+      title: "Languages",
+      options: [
+        "English",
+        "Hindi",
+        "Kannada",
+        "Telugu",
+        "Tamil",
+        "Malayalam",
+        "English 7D",
+        "Japanese",
+        "Marathi",
+        "Multi Language",
+      ],
+    },
     // { title: "Genres", options: ["Drama", "Action", "Thriller", "Comedy", "Romantic", "Adventure", "Crime", "Fantasy", "Horror", "Biography", "Musical", "Period", "Superhero", "Animation", "Anime", "Classic", "Family", "Sci-Fi", "Suspense"] },
-    // { title: "Formats", options: ["2D", "4DX", "IMAX2D", "3D", "4DX 3D", "7D", "MX4D", "SCREEN X"] }  
+    // { title: "Formats", options: ["2D", "4DX", "IMAX2D", "3D", "4DX 3D", "7D", "MX4D", "SCREEN X"] }
   ];
 
   const [selectedOptions, setSelectedOptions] = useState({});
@@ -22,26 +36,31 @@ export default function Movies() {
           const match = Object.keys(selectedOptions).every((category) => {
             const categoryKey = category.toLowerCase();
             const movieCategoryValue = movie[categoryKey];
-    
+
             if (movieCategoryValue) {
-              const categoryOptions = selectedOptions[category]?.map(option => option.toLowerCase());
-    
+              const categoryOptions = selectedOptions[category]?.map((option) =>
+                option.toLowerCase()
+              );
+
               const isMatch = categoryOptions.every((selectedOption) =>
                 movieCategoryValue.toLowerCase().includes(selectedOption)
               );
-    
-              console.log(`${category}: ${movieCategoryValue} => ${isMatch ? 'Match' : 'No Match'}`);
+
+              console.log(
+                `${category}: ${movieCategoryValue} => ${
+                  isMatch ? "Match" : "No Match"
+                }`
+              );
               return isMatch;
             }
-    
+
             return true;
           });
-    
+
           return match;
         })
         .sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
     };
-    
 
     const result = filterMovies();
     setFilteredMovies(result);
@@ -64,31 +83,59 @@ export default function Movies() {
                 {categories.map((category) => (
                   <div key={category.title} className="category">
                     <div className="category-header">
-                      <p style={{ cursor: 'pointer' }}>{category.title}</p>
+                      <p style={{ cursor: "pointer" }}>{category.title}</p>
                     </div>
-                    <div className="category-options" style={{ border: "1px solid #ccc", padding: "10px", fontSize: 'small', display: 'flex', flexWrap: 'wrap', cursor: 'pointer' }}>
+                    <div
+                      className="category-options"
+                      style={{
+                        border: "1px solid #ccc",
+                        padding: "10px",
+                        fontSize: "small",
+                        display: "flex",
+                        flexWrap: "wrap",
+                        cursor: "pointer",
+                      }}
+                    >
                       {category.options.map((option) => (
                         <div
                           key={option}
-                          className={`filter-option ${selectedOptions[category.title]?.includes(option) ? "selected" : ""}`}
-                          onClick={() => setSelectedOptions((prevSelectedOptions) => {
-                            const currentSelectedOptions = prevSelectedOptions[category.title] || [];
-                            const updatedOptions = currentSelectedOptions.includes(option)
-                              ? currentSelectedOptions.filter((o) => o !== option)
-                              : [...currentSelectedOptions, option];
+                          className={`filter-option ${
+                            selectedOptions[category.title]?.includes(option)
+                              ? "selected"
+                              : ""
+                          }`}
+                          onClick={() =>
+                            setSelectedOptions((prevSelectedOptions) => {
+                              const currentSelectedOptions =
+                                prevSelectedOptions[category.title] || [];
+                              const updatedOptions =
+                                currentSelectedOptions.includes(option)
+                                  ? currentSelectedOptions.filter(
+                                      (o) => o !== option
+                                    )
+                                  : [...currentSelectedOptions, option];
 
-                            return {
-                              ...prevSelectedOptions,
-                              [category.title]: updatedOptions
-                            };
-                          })}
+                              return {
+                                ...prevSelectedOptions,
+                                [category.title]: updatedOptions,
+                              };
+                            })
+                          }
                           style={{
-                            backgroundColor: selectedOptions[category.title]?.includes(option) ? "red" : "white",
-                            color: selectedOptions[category.title]?.includes(option) ? "white" : "black",
+                            backgroundColor: selectedOptions[
+                              category.title
+                            ]?.includes(option)
+                              ? "red"
+                              : "white",
+                            color: selectedOptions[category.title]?.includes(
+                              option
+                            )
+                              ? "white"
+                              : "black",
                             border: "1px solid black",
                             padding: "5px",
                             margin: "5px",
-                            cursor: "pointer"
+                            cursor: "pointer",
                           }}
                         >
                           {option}
@@ -107,10 +154,31 @@ export default function Movies() {
               ) : (
                 filteredMovies.map((obj) => (
                   <div className="col-md-3" key={obj.id}>
-                    <div className="card border-0 mb-4" style={{ width: "12rem", height: "30rem" }}>
-                      <Link key={obj.id} to={`/movie/${obj.id}/${obj.moviename}`} > <img src={obj.image} className="card-img-top" alt={`Poster for ${obj.moviename}`} /> </Link>
+                    <div
+                      className="card border-0 mb-4"
+                      style={{ width: "12rem", height: "30rem" }}
+                    >
+                      <Link
+                        key={obj.id}
+                        to={`/movie/${obj.id}/${obj.moviename}`}
+                      >
+                        {" "}
+                        <img
+                          src={obj.image}
+                          className="card-img-top"
+                          alt={`Poster for ${obj.moviename}`}
+                        />{" "}
+                      </Link>
                       {new Date(obj.release_date) > currentDate ? (
-                        <p className="bg-dark text-light">{new Date(obj.release_date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</p>) : (<p className="bg-dark text-light">Rating</p>)}
+                        <p className="bg-dark text-light">
+                          {new Date(obj.release_date).toLocaleDateString(
+                            "en-GB",
+                            { day: "numeric", month: "short", year: "numeric" }
+                          )}
+                        </p>
+                      ) : (
+                        <p className="bg-dark text-light">Rating</p>
+                      )}
                       <div className="card-body">
                         <h5 className="card-title">{obj.moviename}</h5>
                         <p className="card-text">{obj.starring}</p>
@@ -128,70 +196,54 @@ export default function Movies() {
   );
 }
 
-
-
-
-
-
-
-
 // const [image,setImage] = useState(null);
-    // const [moviename, setMovienName] = useState('');
-    // const [starring, setStarring] = useState('');
-    // const [genre, setGenre] = useState('');
+// const [moviename, setMovienName] = useState('');
+// const [starring, setStarring] = useState('');
+// const [genre, setGenre] = useState('');
 
+// const AddMovie = async () => {
 
-    
+//     // try {
+//     //     let response = await fetch('movie/', {
+//     //         method: 'POST',
+//     //         headers: {'Content-Type': 'application/json'},
+//     //         body: JSON.stringify({
+//     //             moviename: moviename,
+//     //             starring: starring,
+//     //             genre: genre
+//     //         })
+//     //     });
+//     //     const jsonData = await response.json();
+//     //     console.log('Movie created:', jsonData);
+//     // } catch (error) {
+//     //     console.error('Error creating movie:', error);
+//     // }
 
+//     try {
+//         const formData = new FormData();
+//         formData.append('image', image);
+//         formData.append('moviename', moviename);
+//         formData.append('starring', starring);
+//         formData.append('genre', genre);
 
-    // const AddMovie = async () => {
+//         let response = await fetch('movie/', {
+//             method: 'POST',
+//             body: formData,
+//         });
 
-    //     // try {
-    //     //     let response = await fetch('movie/', {
-    //     //         method: 'POST',
-    //     //         headers: {'Content-Type': 'application/json'},
-    //     //         body: JSON.stringify({
-    //     //             moviename: moviename,
-    //     //             starring: starring,
-    //     //             genre: genre
-    //     //         })
-    //     //     });
-    //     //     const jsonData = await response.json();
-    //     //     console.log('Movie created:', jsonData);
-    //     // } catch (error) {
-    //     //     console.error('Error creating movie:', error);
-    //     // }
+//         if (response.ok) {
+//             const jsonData = await response.json();
+//             console.log('Movie created:', jsonData);
+//         } else {
+//             console.error('Failed to create movie:', response.statusText);
+//         }
+//     } catch (error) {
+//         console.error('Error creating movie:', error);
+//     }
+// }
 
-    //     try {
-    //         const formData = new FormData();
-    //         formData.append('image', image);
-    //         formData.append('moviename', moviename);
-    //         formData.append('starring', starring);
-    //         formData.append('genre', genre);
-    
-    //         let response = await fetch('movie/', {
-    //             method: 'POST',
-    //             body: formData,
-    //         });
-    
-    //         if (response.ok) {
-    //             const jsonData = await response.json();
-    //             console.log('Movie created:', jsonData);
-    //         } else {
-    //             console.error('Failed to create movie:', response.statusText);
-    //         }
-    //     } catch (error) {
-    //         console.error('Error creating movie:', error);
-    //     }
-    // }
-       
-
-
-
-
-
-
-     {/* <div className="container bg-secondary text-light">
+{
+  /* <div className="container bg-secondary text-light">
             <div className="mx-auto col-10 col-md-8 col-lg-3 py-3"><h3>Add Movies</h3></div>
             <div className="mx-auto col-10 col-md-8 col-lg-3">
                 <form onSubmit={(e) => {e.preventDefault(); AddMovie(); }}>
@@ -222,4 +274,5 @@ export default function Movies() {
                     </div>
                 </form>
             </div>
-            </div> */}
+            </div> */
+}
