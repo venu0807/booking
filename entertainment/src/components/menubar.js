@@ -1,19 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { Link, Routes, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { UserContext } from "./context";
-import Home from "./home";
-import Movies from "./Movies/Movies"
-import MovieDetails from "./Movies/moviedetails";
-import Booking from "./Movies/booking";
-import SeatBooking from "./Movies/seat";
-import Payment from "./Movies/ticket";
-import Events from "./events";
-import Sports from "./sports";
-import Login from "../pages/LoginPage";
-import Register from "../pages/RegisterPage";
-import Cast from "./Movies/cast";
-import Crew from "./Movies/crew";
-import MovieSearch from "./search";
+
 
 
 
@@ -25,7 +13,7 @@ export default function Menubar(){
     const handleSearch = (query) => {
         // Implement your app-wide search logic here
         console.log("Performing app-wide search with query:", query);
-        // You may want to navigate to a search results page or update the UI accordingly
+        // You may want to navigate to a s2earch results page or update the UI accordingly
       };
 
     
@@ -82,30 +70,9 @@ return(
                         <li className="nav-item">
                             <Link className="nav-link active" to="/events">Events</Link>
                         </li>
-                        {/* <li className="nav-item">
-                            <Link className="nav-link active" to="/sports">Sports</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link active" to="/activites">Activites</Link>
-                        </li> */}
                     </ul>
                </div>
             </nav>
-            <Routes>
-              <Route path='/menu' element={<Menubar />} />
-              <Route path='/login' element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/" element={<Home />} />
-              <Route path="/movies" element={<Movies />} />
-              <Route path="/movie/:id/:moviename/*" element={<MovieDetails />} />
-              <Route path="/movie/:id/:moviename/booking" element={<Booking />} />
-              <Route path="/movie/:id/:moviename/booking/seats" element={<SeatBooking />} />
-              <Route path="/movie/:id/:moviename/booking/seats/payment" element={<Payment />} />
-              <Route path="/person" element={<Cast/>} />
-              <Route path="/persen" element={<Crew/>} />
-              <Route path="/events" element={<Events />} />
-              <Route path="/sports" element={<Sports />} />
-            </Routes>
       </div>
   );
 }

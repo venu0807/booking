@@ -1,9 +1,6 @@
 from .models import MovieModel, RatingModel, CastModel, CrewModel, TheaterShowModel, SeatBookingModel
 from .serializers import MovieSerializer, RatingSerializer, CastSerializer, CrewSerializer, TheaterShowSerializer, SeatBookingSerializer
-from  rest_framework import viewsets
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import viewsets
 from rest_framework.decorators import api_view,permission_classes
 from rest_framework.permissions import AllowAny
 from django.contrib.auth.models import User
@@ -25,12 +22,9 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         return token
 
- 
- 
+
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
-
-
 
 
 @csrf_exempt
@@ -53,16 +47,11 @@ def register_user(request):
         return JsonResponse({'detail': 'Invalid request method'}, status=405)
 
 
-
-
-
-
-
-
 @permission_classes([AllowAny])
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = MovieModel.objects.all()
     serializer_class = MovieSerializer
+
 
 @permission_classes([AllowAny])
 class RatingViewSet(viewsets.ModelViewSet):
@@ -90,8 +79,6 @@ class CrewViewSet(viewsets.ModelViewSet):
 class TheaterShowViewSet(viewsets.ModelViewSet):
     queryset = TheaterShowModel.objects.all()
     serializer_class = TheaterShowSerializer
-
-
 
 
 @permission_classes([AllowAny])

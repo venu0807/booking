@@ -15,8 +15,6 @@ class MovieModel(models.Model):
     about = models.CharField(max_length = 1000, null=True, blank=True)
     languages = models.CharField(max_length = 50)
     trailer_link = models.URLField(null=True, blank=True)
-
-
     cast = models.ManyToManyField('CastModel', related_name='movies_cast_members', blank=True)
     crew = models.ManyToManyField('CrewModel', related_name='movies_crew_members', blank=True)
 
